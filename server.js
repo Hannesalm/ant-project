@@ -5,6 +5,11 @@ const path = require("path");
 // create the express app
 const app = express();
 
+// Import the package
+const secure = require("express-force-https");
+// Add it as a layer to the middleware
+app.use(secure);
+
 app.use("/", serveStatic(path.join(__dirname, "/dist")));
 
 const port = process.env.PORT || 5000;
