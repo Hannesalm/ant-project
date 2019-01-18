@@ -4,11 +4,44 @@
       <v-toolbar-title>Ant simulator</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn>High Scent: {{highestScent}}</v-btn>
-        <v-btn>Size: {{size}}</v-btn>
-        <v-btn>Ants: {{ants.length}}</v-btn>
+        <v-menu
+          offset-y
+          :close-on-content-click="false"
+        >
+          <v-card-title>Ants to be spawned {{nrOfAnts}}</v-card-title>
+          <v-btn
+            slot="activator"
+            dark
+          >
+            Ants: {{ants.length}}</v-btn>
+          <v-card>
+            <v-container>
+              <v-btn
+                @click="nrOfAnts++"
+                fab
+                dark
+                small
+                color="primary"
+              >
+                <v-icon dark>add</v-icon>
+              </v-btn>
+              <v-btn
+                @click="nrOfAnts--"
+                fab
+                dark
+                small
+                color="red"
+              >
+                <v-icon dark>remove</v-icon>
+              </v-btn>
+            </v-container>
+
+          </v-card>
+        </v-menu>
+        <v-btn>Highest Scent: {{highestScent}}</v-btn>
+        <v-btn>Ant Size: {{size}}</v-btn>
         <v-btn>Found scent: {{follows}}</v-btn>
-        <v-btn>Have food: {{foods}}</v-btn>
+        <v-btn>Ants have food: {{foods}}</v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
